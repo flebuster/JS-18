@@ -1,0 +1,38 @@
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-gap: 4px;
+    background-color: black;
+    padding: 4px;
+    border-radius: 5px;
+    max-width: 450px;
+    font-family: "Calibri";
+}
+
+.item {
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+.input {
+    height: auto;
+    min-height: 60px;
+    height: 60px;
+    outline: none;
+    padding: 5px 30px;
+    grid-column: 1/-1;
+    
+    justify-content: flex-end;
+ 
+}
+
+
