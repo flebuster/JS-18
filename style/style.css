@@ -42,11 +42,11 @@
 }
 
 .hide{
-    width: 200px;
+    width: 180px;
     height: 110px;
     background-color: white;
     position: absolute;
-    right: 0;
+    margin-left: 700px;
     top: 0;
     display: none;
   }
