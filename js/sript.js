@@ -1,16 +1,19 @@
 let input = document.querySelector('.input');
+let boxCalc = document.querySelector('.container');
 let power = "";
-let modal = document.querySelector('.modal'),
-    frame = document.querySelector('.hide'),
-    history = [];
-
+let modal = document.querySelector('.modal');
+let frame = document.querySelector('.hide');
+let memoArray = [];
+let currentOperand = '';
 
 function insert(num) {
     if  (input.textContent == 0) {
         input.textContent = "";
-        input.textContent+= num;
+        input.textContent += num;
+        
     } else
-        input.textContent+= num;
+        input.textContent += num;
+        
 }
 
 function clean() {
@@ -25,8 +28,7 @@ function back() {
         input.textContent = "0";
     }
 }
-
-      
+ 
 function percent() {
     input.textContent = eval(input.textContent)/100;
 }
@@ -95,7 +97,6 @@ function operation(name) {
 }
 
 function equal() {
-    
     let exp = input.textContent;
     if (input.textContent.includes('^')) {
         let tmp = input.textContent.split('^')
@@ -108,26 +109,27 @@ function equal() {
     if (exp) {
         input.textContent = eval(exp);
     }
-    if(input.textContent == "NaN" || input.textContent == Infinity){
+    if (input.textContent == "NaN" || input.textContent == Infinity){
         input.textContent = "ошибка";
-      }
-    if(history.length > 3){
-        history.shift();
-      }
-           
-            frame.innerHTML = '';
-            frame.innerHTML = '<p> 1: ' + history[2] + '</p>' +
-                                '<p> 2: ' + history[1] + '</p>' +
-                                '<p> 3: ' + history[0] + '</p>';
-            if (history[2] == null && history[1] != null){
-                frame.innerHTML = '<p> 1: ' + history[1] + '</p>' +
-                                '<p> 2: ' + history[0] + '</p>';
-            }else if (history[1] == null && history[0] != null){
-                frame.innerHTML = '<p> 1: ' + history[0] + '</p>';
-            }
+    }
+      
+    
    
-
 }
 modal.addEventListener('click', () => {
     frame.classList.toggle('show');
-  })
+})
+
+boxCalc.addEventListener('click', function(){
+
+
+    if(event.target.classList.contains('equal')){
+        console.log(currentOperand);
+        currentOperand = currentOperand + '=' + input.innerHTML;
+        memoArray.push(currentOperand);
+        currentOperand = '';
+    } else{
+        currentOperand = input.innerHTML;
+    }
+    console.log(memoArray);
+})
